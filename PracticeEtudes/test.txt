@@ -1,0 +1,9 @@
+My name is Brode
+My last name is Bosecke
+I am practicing reading
+One line at a time
+To then clear the variable
+and print another line
+52
+#%^
+End of file :)

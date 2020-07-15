@@ -2,8 +2,12 @@
 #include <algorithm>
 #include <string>
 #include <stdlib.h>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 /**
 * @author Brodie Bosecke
@@ -13,12 +17,31 @@ using namespace std;
 
 /**
 *
+*
+*
+* SOURCE: https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
+*/
+std::vector<std::string> splitString (const std::string &s) {
+    char delim = '/';
+    std::vector<std::string> result;
+    std::stringstream ss (s);
+    std::string item;
+
+    while (getline (ss, item, delim)) {
+        result.push_back (item);
+    }
+
+    return result;
+}
+
+/**
+*
 * getInput takes input from the user, and returns the input to be stored in the array from
 * where it was called.
 */
-string getInput(){
-    string temp;
-    cin >> temp; 
+std::string getInput(){
+    std::string temp;
+    std::cin >> temp; 
     return temp;
 }
 
@@ -27,7 +50,7 @@ string getInput(){
 * This function takes a string as parameters and returns the uppercase version of the string
 * SOURCE: https://stackoverflow.com/questions/735204/convert-a-string-in-c-to-upper-case
 */
-string tidyHand(std::string card){
+std::string tidyHand(std::string card){
     std::transform(card.begin(), card.end(),card.begin(), ::toupper);
     return card;
 }
@@ -36,7 +59,7 @@ string tidyHand(std::string card){
 *
 *change input into int values, the int values are ordered to how the hand should be ordered (smallest to largest)
 */
-int stringCardToInt(string card){
+int stringCardToInt(std::string card){
     int placeholder = 0;
     if(card.at(0) == 'A' || card.at(0) == '1'){
         placeholder = 80;
@@ -66,7 +89,7 @@ int stringCardToInt(string card){
 
     if(placeholder == 0){
         cout << "INVALID INPUT" << endl;
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 
     return placeholder;
@@ -75,9 +98,9 @@ int stringCardToInt(string card){
 // Function to sort character array b[] 
 // according to the order defined by a[] 
 // https://www.geeksforgeeks.org/sorting-array-according-another-array-using-pair-stl/
-void pairsort(int a[], string b[], int n) 
+void pairsort(int a[], std::string b[], int n) 
 { 
-    pair<int, string> pairt[n]; 
+    std::pair<int, std::string> pairt[n]; 
   
     // Storing the respective array 
     // elements in pairs. 
@@ -120,36 +143,44 @@ void duplicateChecker(int i){
 
 /**
 *
+*
+* READ LINE BY LINE SOURCE:
+*   https://stackoverflow.com/questions/13035674/how-to-read-line-by-line-or-a-whole-text-file-at-once
 * Driver code */
 int main()
 {
     int cardPlaceholder[5];
-    string cardsList[5];
-    cout << "Enter a card value, and press enter to then enter another card value" << endl;
-    cout << "Please enter 5 card values e.g. '5H'" << endl;
-    for(int i = 0; i < 5; i++){
-        cardsList[i] = getInput();
+    std::string cardsList[5];
+    std::ifstream file("manyHands.txt");
+    std::string line;
+
+    if(!file.is_open()){
+        perror("Error opening file");
+        exit(EXIT_FAILURE);
     }
-    for(int i = 0; i < 5; i++){
+    while(std::getline(file, line)){
+        std::vector<std::string> v = splitString(line);
+        for(int j = 0; j < 5; j++){
+            cardsList[j] = v[j];
+        }
+        for(int i = 0; i < 5; i++){
         cardsList[i] = tidyHand(cardsList[i]);
-    }
-    for(int i = 0; i < 5; i++){
-        cardPlaceholder[i] = stringCardToInt(cardsList[i]);
-    }
-    //check for duplicate int values
-    pairsort(cardPlaceholder, cardsList, 5);
+        }
+        for(int i = 0; i < 5; i++){
+            cardPlaceholder[i] = stringCardToInt(cardsList[i]);
+        }
+        //check for duplicate int values
+        pairsort(cardPlaceholder, cardsList, 5);
 
-    for(int i = 0; i < 5; i++){
-        duplicateChecker(cardPlaceholder[i]);
-    }
+        for(int i = 0; i < 5; i++){
+            duplicateChecker(cardPlaceholder[i]);
+        }
 
-    for (int i = 0; i < 5; i++){
-        cout << cardsList[i] << " "; 
+        for (int i = 0; i < 5; i++){
+            cout << cardsList[i] << " "; 
+        }
+        cout << "" << endl;
+
     }
-    /**FOR LOOP to print what is currently in the cardsList
-    for(int i = 0; i < 5; i++){
-        cout << cardPlaceholder[i] << " ";
-    } */
-    cout << endl;
     return 0;
 }
