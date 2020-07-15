@@ -148,14 +148,24 @@ void duplicateChecker(int i){
 /**
 *
 *
+* READ IN FROM ARGS SOURCE:
+*   https://stackoverflow.com/questions/7651243/c-read-a-file-name-from-the-command-line-and-utilize-it-in-my-file
 * READ LINE BY LINE SOURCE:
 *   https://stackoverflow.com/questions/13035674/how-to-read-line-by-line-or-a-whole-text-file-at-once
 * Driver code */
-int main()
+int main(int argc, char** argv)
 {
+    std::string inFile = "";
+    if(argc == 2){
+        inFile = argv[1];
+        cout << inFile << endl;
+    } else {
+        cout << "USAGE: ./pokerHands manyHands.txt" << endl;
+        return 1;
+    }
     int cardPlaceholder[5];
     std::string cardsList[5];
-    std::ifstream file("manyHands.txt");
+    std::ifstream file(inFile);
     std::string line;
 
     if(!file.is_open()){
