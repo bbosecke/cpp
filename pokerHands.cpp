@@ -13,6 +13,10 @@ using std::endl;
 * @author Brodie Bosecke
 * July 2020
 * Etude Poker Hands - rewritten in c++ for practice
+*
+* COMMANDS TO USE IN TERMINAL
+* To compile program, "g++ -o pokerHands pokerHands.cpp"
+* to run the file, "./pokerHands"
 */
 
 /**
