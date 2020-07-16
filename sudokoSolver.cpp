@@ -16,6 +16,30 @@ using std::endl;
 * by checking the row, checking the column, and checking the square.
 */
 
+/**
+*
+*
+* 
+*/
+bool checkRules(int posRow, int posCol)
+
+
+/**
+*
+* This function iterates through the entire grid to find all the blank spaces to be solved
+* 
+*/
+bool findBlankSpaces(int grid[9][9])
+{
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            if(grid[i][j] == 0){
+                checkRules(grid[i][j])
+            }
+        }
+    }
+    return false;
+}
 
 
 
@@ -33,6 +57,7 @@ int main()
                         {0, 4, 0, 0, 7, 0, 6, 0, 0},
                         {8, 0, 0, 2, 3, 0, 4, 1, 7}};
     
+    findBlankSpaces(grid);
 
     return 0;
 }
