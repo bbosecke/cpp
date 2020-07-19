@@ -22,7 +22,7 @@ using std::endl;
 * 
 */
 bool checkRules(int posRow, int posCol)
-
+    //Call 3 methods, one by one, if any return false, then number cannot exist there. n++
 
 /**
 *
