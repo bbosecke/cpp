@@ -9,6 +9,9 @@ using std::endl;
 *
 *This is going to be a program that reads arguments and depending on the
 *argument given depends on what the program does
+*
+* To compile the program, 'g++ -o arguments argumentLearning.cpp'
+* to run the program, './argument' which will then prompt you further
 */
 
 
