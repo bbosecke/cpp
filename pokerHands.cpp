@@ -41,7 +41,7 @@ std::vector<std::string> splitString (const std::string &s) {
 /**
 *
 * getInput takes input from the user, and returns the input to be stored in the array from
-* where it was called.
+* where it was called. 
 */
 std::string getInput(){
     std::string temp;
