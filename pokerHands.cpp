@@ -16,7 +16,7 @@ using std::endl;
 *
 * COMMANDS TO USE IN TERMINAL
 * To compile program, "g++ -o pokerHands pokerHands.cpp"
-* to run the file, "./pokerHands"
+* to run the file, "./pokerHands manyHands.txt"
 */
 
 /**
@@ -158,7 +158,6 @@ int main(int argc, char** argv)
     std::string inFile = "";
     if(argc == 2){
         inFile = argv[1];
-        cout << inFile << endl;
     } else {
         cout << "USAGE: ./pokerHands manyHands.txt" << endl;
         return 1;
