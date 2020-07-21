@@ -67,7 +67,7 @@ int main(int argc, char** argv)
     if(argc == 2){
         inFile = *argv[1];
     } else {
-        cout << "To see full details on how to run this program, './argumentLearning h'" << endl;
+        cout << "To see full details on how to run this program, './arguments h'" << endl;
         return EXIT_FAILURE;
     }
 
@@ -85,9 +85,13 @@ int main(int argc, char** argv)
             divide();
             break;
         default:
-            cout << "To run this program, please type, ./argumentLearning x" << endl;
+            cout << "To run this program, please type, ./arguments x" << endl;
             cout << "replace x with either 'a', 'm', 's', or 'd' which will then" << endl;
             cout << "do the following with two numbers you enter" << endl;
+            cout << "a will prompt you to add a number to another number" << endl;
+            cout << "m will prompt you to multiply a number to another number" << endl;
+            cout << "s will prompt you to subtract a number to another number" << endl;
+            cout << "d will prompt you to divide a number to 7 giving a result" << endl;
     }
 
     return 1;
