@@ -14,7 +14,15 @@ using std::endl;
 * The rules of sudoko are each row, column and square must only contain 1 * value of 1-9
 * therefore to create a solver, I have to insert a number, check if it violates the condition
 * by checking the row, checking the column, and checking the square.
+*
+* TO COMPILE - "g++ -o solve sudokoSolver.cpp"
+* TO RUN - ./solve"
+*
+* CHANGES TO MAKE ONCE GOT WORKING BELOW
+* Make it so can enter sudoko from textFile OR manually enter using argc and argv flags
+*
 */
+
 
 /**
 *
@@ -23,7 +31,9 @@ using std::endl;
 */
 bool checkRules(int posRow, int posCol)
     //Call 3 methods, one by one, if any return false, then number cannot exist there. n++
-
+    //check row
+    //check col
+    //check square
 /**
 *
 * This function iterates through the entire grid to find all the blank spaces to be solved
